@@ -4,6 +4,12 @@ class UsersController < ApplicationController
     @users = user_search.execute
   end
 
+  def destroy
+    user = User.find(params[:id])
+    user.delete
+    redirect_to :action => "index"
+  end
+
   private
 
   def params_user_search
