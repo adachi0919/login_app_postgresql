@@ -6,23 +6,24 @@
     <%= text_field_tag :search_email %>
     <%= submit_tag '検索' %>
   <% end %>
-  <table>
-    <tbody>
-      <thead>
-        <tr>
-          <th>名前</th>
-          <th>メールアドレス</th>
-        </tr>
-      </thead>
-      <% @users.each do |user| %>
-        <tr>
-          <td><%= user.name %></td>
-          <td><%= user.email %></td>
-          <td><%= link_to '削除', "/users/#{user.id}", method: :delete, data: {confirm: "削除しますか？"} %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+      <section class="bg-light text-left py-5 ml-0">
+        <div class="container">
+          <table class="table">
+            <thead class="pl-0">
+              <tr><th>名前</th><th>メールアドレス</th><th></th></tr>
+            </thead>
+            <body>
+              <% @users.each do |user| %>
+                <tr>
+                  <th><%= user.name %></th>
+                  <th><%= user.email %></th>
+                  <th><%= link_to '削除', "/users/#{user.id}", method: :delete, data: {confirm: "削除しますか？"} %></th>
+                </tr>
+              <% end %>
+            </body>
+          </table>
+        </div>
+      </section>
 <% else %>
   <h1>ログインアプリへようこそ</h1>
 <% end %>
