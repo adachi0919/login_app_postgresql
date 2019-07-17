@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>LoginAppPsql</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -12,11 +13,19 @@
   <body>
     <h1>ログインアプリ</h1>
     <% if user_signed_in? %>
+      <div class="alert alert-info text-left rounded-0 alert-dissmissible fade show">
+        ログインアプリへようこそ！！
+        <button class="close" data-dismiss="alert">
+          &times;
+        </button>
+      </div>
       <h2> 現在 <%= current_user.name %> さんがログインしています </h2>
       <h4> メールアドレス： <%= current_user.email %> </h4>
       <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
     <% else %>
-      <h2> 現在ログインしていません </h2>
+      <div class="alert alert-info text-left rounded-0">
+        コンテンツを観覧する場合はログインして下さい
+      </div>
       <%= link_to "ログイン", new_user_session_path, class: 'post' %>
       <%= link_to "新規登録", new_user_registration_path, class: 'post' %>
     <% end %>
